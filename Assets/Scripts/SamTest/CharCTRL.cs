@@ -16,8 +16,11 @@ public class CharCTRL : MonoBehaviour
 
     private bool AiActive = true;
 
+    public GameObject m_EndTile;
+
     [Header("Sounds")]
     public AudioClip DieSond;
+
 
 
     // Use this for initialization
@@ -41,9 +44,30 @@ public class CharCTRL : MonoBehaviour
             return;
         Vector2 t_Direction = m_Path.Tiles[NextTargetId].transform.position - transform.position;
 
+
+
+        if (t_Direction != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(t_Direction.y, t_Direction.x) * Mathf.Rad2Deg;
+            GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        }
+
+
+
         transform.Translate(t_Direction.normalized * Time.deltaTime * Speed);
 
         float c2 = t_Direction.sqrMagnitude;
+
+        //transform.Rotate(t_Direction.normalized);
+
+
+
+
+
+
+
+
+
         //quaternion. look rotation
 
         if (c2 < DistanceCheck * DistanceCheck)
