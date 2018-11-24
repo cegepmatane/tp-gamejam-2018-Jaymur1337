@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
 
     public class BoardManager : MonoBehaviour
     {
-        public MapGrid map;
+        
         // Using Serializable allows us to embed a class with sub properties in the inspector.
         [Serializable]
         public class Count
@@ -24,7 +24,7 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
             }
         }
 
-
+        public MapGrid map;
         public int columns;                                         //Number of columns in our game board.
         public int rows;                                            //Number of rows in our game board.
         public Count wallCount = new Count(5, 9);                       //Lower and upper limit for our random number of walls per level.
@@ -35,7 +35,10 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
         public GameObject[] foodTiles;                                  //Array of food prefabs.
         public GameObject[] enemyTiles;                                 //Array of enemy prefabs.
         public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
+        public GameObject[] player;
 
+        private float charX = -7.5f;
+        private float charY = -7.5f;
         private float xAlign = -8.5f;
         private float yAlign = -8.5f;
         private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
@@ -44,8 +47,9 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
 
     private void Awake()
     {
-        columns = map.GridSize;
-        rows = map.GridSize;
+        map = (MapGrid)FindObjectOfType(typeof(MapGrid));
+        columns = map.GridSize - 2;
+        rows = map.GridSize - 2;
     }
 
     //Clears our list gridPositions and prepares it to generate a new board.
@@ -94,6 +98,9 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
                 }
             }
 
+            GameObject Character = Instantiate(player[0], new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+            Character.transform.SetParent(boardHolder);
+            
             boardHolder.transform.SetParent(map.transform);
             Vector2 Alignement = new Vector2(xAlign,yAlign);
 
@@ -170,7 +177,7 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
 
             Vector2 Alignement = new Vector2(xAlign, yAlign);
             t_exitplacer.transform.SetParent(boardHolder);
-        t_exitplacer.transform.position = -Alignement;
+            t_exitplacer.transform.position = -Alignement;
             
         }
 }
