@@ -542,6 +542,11 @@ Prefab:
       propertyPath: map
       value: 
       objectReference: {fileID: 1174915369}
+    - target: {fileID: 114854550957359136, guid: 565501150a2bbf04ca819442797d7160,
+        type: 2}
+      propertyPath: foodCount.minimum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 565501150a2bbf04ca819442797d7160, type: 2}
   m_IsPrefabAsset: 0
