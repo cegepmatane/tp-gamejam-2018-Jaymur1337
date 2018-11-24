@@ -15,6 +15,8 @@ public class CharPathFinder : MonoBehaviour
     }
     public MapGrid grid;
 
+
+
     public Transform EndTransform;
 
     private Tile m_EndTile;
@@ -27,8 +29,14 @@ public class CharPathFinder : MonoBehaviour
     private CharCTRL c;
 
 
+    private void Start()
+    {
+        grid = (MapGrid)FindObjectOfType(typeof(MapGrid));
+    }
+
     public void FindEndPoint()
     {
+
         m_Nodes = null;
 
         EndTransform = GameObject.FindGameObjectWithTag("EndTile").transform;
