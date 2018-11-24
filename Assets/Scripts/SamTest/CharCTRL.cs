@@ -54,6 +54,7 @@ public class CharCTRL : MonoBehaviour
             PlayerPathFinder.FindEndPoint();
 
             m_Path = GameObject.FindObjectOfType<CharPathFinder>().GetPath(this.transform);
+            Debug.Log(m_Path);
 
             if (m_Path.Tiles.Count < 2)
             {

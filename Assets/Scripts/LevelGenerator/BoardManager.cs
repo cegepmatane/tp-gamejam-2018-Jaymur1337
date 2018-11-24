@@ -44,13 +44,7 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
         private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
         private Transform ObstacleHolder;
         private List<Vector3> gridPositions = new List<Vector3>();   //A list of possible locations to place tiles.
-
-    private void Awake()
-    {
-        map = (MapGrid)FindObjectOfType(typeof(MapGrid));
-        columns = map.GridSize - 2;
-        rows = map.GridSize - 2;
-    }
+    
 
     //Clears our list gridPositions and prepares it to generate a new board.
     void InitialiseList()
@@ -74,6 +68,10 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
         //Sets up the outer walls and floor (background) of the game board.
         void BoardSetup()
         {
+            map = (MapGrid)FindObjectOfType(typeof(MapGrid));
+            columns = map.GridSize - 2;
+            rows = map.GridSize - 2;
+
             //Instantiate Board and set boardHolder to its transform.
             boardHolder = new GameObject("Board").transform;
 
@@ -98,8 +96,7 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
                 }
             }
 
-            GameObject Character = Instantiate(player[0], new Vector3(0.1f, 0.1f, 0f), Quaternion.identity) as GameObject;
-            Character.transform.SetParent(boardHolder);
+            
             
             boardHolder.transform.SetParent(map.transform);
             Vector2 Alignement = new Vector2(xAlign,yAlign);
@@ -178,6 +175,9 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
             Vector2 Alignement = new Vector2(xAlign, yAlign);
             t_exitplacer.transform.SetParent(boardHolder);
             t_exitplacer.transform.position = -Alignement;
-            
-        }
+
+            GameObject Character = Instantiate(player[0], new Vector3(0.1f, 0.1f, 0f), Quaternion.identity) as GameObject;
+
+
+    }
 }

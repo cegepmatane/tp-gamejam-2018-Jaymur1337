@@ -17,9 +17,10 @@ public class levelManager : MonoBehaviour
         }
         else if (instance != this)
             Destroy(gameObject);
-            DontDestroyOnLoad(gameObject);
-            BoardScript = GetComponent<BoardManager>();
-            InitGame();
+
+        DontDestroyOnLoad(gameObject);
+        BoardScript = GetComponent<BoardManager>();
+        InitGame();
 	}
     void InitGame()
     {

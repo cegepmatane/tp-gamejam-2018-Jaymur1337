@@ -57,6 +57,7 @@ public class MapGrid : MonoBehaviour
 
         //int t_MaxGridX = t_Tiles.Max(t => t.GridPoint.x);
         //int t_MaxGridY = t_Tiles.Max(t => t.GridPoint.y);
+
     }
     private void OnDrawGizmosSelected()
     {
@@ -95,10 +96,15 @@ public class MapGrid : MonoBehaviour
 
         // return si on clique en dehors de la grille
         if (a_Point.x < -t_GridHalfTotalWidth || a_Point.x > t_GridHalfTotalWidth)
+        {
+            Debug.Log("test");
             return null;
+        }
         if (a_Point.y < -t_GridHalfTotalHeight || a_Point.y > t_GridHalfTotalHeight)
+        {
+            Debug.Log("test");
             return null;
-
+        }
         var t_GripPoint = new GridPoint();
 
         t_GripPoint.x = (int)((a_Point.x + t_GridHalfTotalWidth) / CellWidth);
