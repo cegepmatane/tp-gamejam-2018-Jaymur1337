@@ -15,18 +15,15 @@ public class CharPathFinder : MonoBehaviour
     }
     public MapGrid grid;
 
-
-
     public Transform EndTransform;
 
     private Tile m_EndTile;
-
 
     public bool DebugMode = false;
 
     private Node[,] m_Nodes;
 
-    private CharCTRL c;
+    private CharCTRL PlayerObj;
 
 
     private void Start()
@@ -65,10 +62,6 @@ public class CharPathFinder : MonoBehaviour
         }
 
     }
-
-
-
-
 
     public Path GetPath(Transform a_Ennemy)
     {
@@ -149,10 +142,9 @@ public class CharPathFinder : MonoBehaviour
 
 
         Path t_Path = new Path();
-        if(t_EndNode.Parent != null)
+        t_Path.Tiles = new List<Tile>();
+        if (t_EndNode.Parent != null)
         {
-            t_Path.Tiles = new List<Tile>();
-
             Node current = t_EndNode;
             t_Path.Tiles.Add(current.Tile);
 
@@ -161,9 +153,8 @@ public class CharPathFinder : MonoBehaviour
                 t_Path.Tiles.Add(current.Parent.Tile);
                 current = current.Parent;
             }
+            t_Path.Tiles.Reverse();
         }
-
-        t_Path.Tiles.Reverse();
         return t_Path;
     }
 
