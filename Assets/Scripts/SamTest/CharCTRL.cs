@@ -38,7 +38,9 @@ public class CharCTRL : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            
+            NextTargetId = 1;
+            m_Path = null;
+            CurrentPath = null;
             m_EndTile = GameObject.FindGameObjectWithTag("EndTile");
 
             Vector3 pz = Camera.main.ScreenToWorldPoint(Input.mousePosition);
