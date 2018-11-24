@@ -162,7 +162,8 @@ MonoBehaviour:
   - {fileID: 1807487177109268, guid: 7458b2213bba1094b90bb1ec2dfb828a, type: 2}
   - {fileID: 1353220876625916, guid: 18a43080708030649a63f1daed0b9ea8, type: 2}
   - {fileID: 1165124021953726, guid: 527b27e269422324cb402d7a31d050e5, type: 2}
-  SelectedTile: 0
+  - {fileID: 1605558178719106, guid: f58db217740ad064c981395e463972d0, type: 2}
+  SelectedTile: 1
 --- !u!1 &1606321157
 GameObject:
   m_ObjectHideFlags: 0
