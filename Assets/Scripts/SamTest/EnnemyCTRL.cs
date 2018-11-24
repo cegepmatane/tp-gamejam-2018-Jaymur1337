@@ -39,19 +39,28 @@ public class EnnemyCTRL : MonoBehaviour
         //transform.position = CurrentPath.Path[0].position;
     }
 
+
+    void Test()
+    {
+
+    }
+
+
+
     // Update is called once per frame
     void Update()
     {
         if (!AiActive)
             return;
         Vector2 t_Direction = m_Path.Tiles[NextTargetId].transform.position - transform.position;
-
+        
+        /*
         if (t_Direction != Vector2.zero)
         {
             float angle = Mathf.Atan2(t_Direction.y, t_Direction.x) * Mathf.Rad2Deg;
             GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         }
-
+        */
         transform.Translate(t_Direction.normalized * Time.deltaTime * Speed);
 
         float c2 = t_Direction.sqrMagnitude;

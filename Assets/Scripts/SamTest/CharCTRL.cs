@@ -21,6 +21,12 @@ public class CharCTRL : MonoBehaviour
 
     private CharPathFinder PlayerPathFinder;
 
+
+
+    public GameObject Gun;
+    public GameObject Bullet;
+
+
     [Header("Sounds")]
     public AudioClip DieSond;
     public AudioClip BlockedSond;
@@ -63,7 +69,16 @@ public class CharCTRL : MonoBehaviour
                 AiActive = false;
             }
         }
-        if (!AiActive)
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            GameObject ShootedBullet = Instantiate(Bullet);
+            ShootedBullet.transform.position = Gun.transform.position;
+            ShootedBullet.transform.rotation = Gun.transform.rotation;
+
+
+        }
+            if (!AiActive)
             return;
 
         Vector2 t_Direction = m_Path.Tiles[NextTargetId].transform.position - transform.position;
