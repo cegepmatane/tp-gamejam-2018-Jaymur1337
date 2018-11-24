@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class CharPathFinder : MonoBehaviour
+public class EnnemyPathFinder : MonoBehaviour
 {
     private class Node
     {
@@ -15,26 +15,32 @@ public class CharPathFinder : MonoBehaviour
     }
     public MapGrid grid;
 
+   // public Transform StartTransform;
     public Transform EndTransform;
 
     private Tile m_EndTile;
+
+    //m_StartTile,
 
 
     public bool DebugMode = false;
 
     private Node[,] m_Nodes;
 
-    private CharCTRL c;
+
+    //private Path TestPath;
 
 
-    public void FindEndPoint()
+    private void Start()
     {
-        m_Nodes = null;
 
-        EndTransform = GameObject.FindGameObjectWithTag("EndTile").transform;
+        EndTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<MapGrid>();
 
+        // MapGrid.GridPoint t_StartGridPoint = grid.WorldPointToGridPoint(StartTransform.position);
         MapGrid.GridPoint t_EndGridPoint = grid.WorldPointToGridPoint(EndTransform.position);
 
+       // m_StartTile = grid.GetTile(t_StartGridPoint);
         m_EndTile = grid.GetTile(t_EndGridPoint);
 
         Debug.Log(t_EndGridPoint.x + " " + t_EndGridPoint.y);
@@ -50,17 +56,16 @@ public class CharPathFinder : MonoBehaviour
                 m_Nodes[i, j].Tile = grid.Tiles[i, j];
             }
         }
-        foreach (Node n in m_Nodes)
+        foreach(Node n in m_Nodes)
         {
             if (n == null) continue;
             n.H = Heuristique(n.Tile.GridPoint.x, n.Tile.GridPoint.y, m_EndTile.GridPoint.x, m_EndTile.GridPoint.y);
         }
 
+        //todo tamporaire
+        //TestPath = GetPath();
+
     }
-
-
-
-
 
     public Path GetPath(Transform a_Ennemy)
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class CharCTRL : MonoBehaviour
+public class EnnemyCTRL : MonoBehaviour
 {
 
     public float HP;
@@ -14,51 +14,34 @@ public class CharCTRL : MonoBehaviour
     private Path CurrentPath;
     private int NextTargetId = 1;
 
-    private bool AiActive = false;
+    private bool AiActive = true;
 
     public GameObject m_EndTile;
 
     [Header("Sounds")]
     public AudioClip DieSond;
 
-    public CharPathFinder niga;
-
 
     // Use this for initialization
     void Start()
     {
-        Instantiate(m_EndTile);
+
+        m_EndTile = GameObject.FindGameObjectWithTag("Player");
+
+        m_Path = GameObject.FindObjectOfType<EnnemyPathFinder>().GetPath(this.transform);
+
+        if (m_Path.Tiles.Count < 2)
+        {
+            Debug.LogError("PATH INVALID - < 2 elements");
+            Destroy(gameObject);
+        }
+
         //transform.position = CurrentPath.Path[0].position;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            
-            m_EndTile = GameObject.FindGameObjectWithTag("EndTile");
-
-            Vector3 pz = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            pz.z = 0;
-
-            m_EndTile.transform.position = pz;
-
-            niga.FindEndPoint();
-
-            m_Path = GameObject.FindObjectOfType<CharPathFinder>().GetPath(this.transform);
-
-            if (m_Path.Tiles.Count < 2)
-            {
-                Debug.LogError("PATH INVALID - < 2 elements");
-                Destroy(gameObject);
-            }
-
-            AiActive = true;
-
-        }
         if (!AiActive)
             return;
         Vector2 t_Direction = m_Path.Tiles[NextTargetId].transform.position - transform.position;
@@ -82,22 +65,11 @@ public class CharCTRL : MonoBehaviour
             //si on est rendu au bout
             if (++NextTargetId == m_Path.Tiles.Count)
             {
-                AiActive = false;
-                niga.enabled = false;
-                niga.enabled = true;
                 //StartCoroutine(Die());
             }
         }
 
-
-
-
-
-
-
     }
-
-
 
     private void OnDrawGizmosSelected()
     {
@@ -115,6 +87,5 @@ public class CharCTRL : MonoBehaviour
             Gizmos.DrawLine(m_Path.Tiles[i].transform.position, m_Path.Tiles[i + 1].transform.position);
         }
     }
-
 
 }
