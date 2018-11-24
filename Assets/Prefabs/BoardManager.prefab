@@ -78,10 +78,11 @@ MonoBehaviour:
   - {fileID: 1807487177109268, guid: 7458b2213bba1094b90bb1ec2dfb828a, type: 2}
   wallTiles:
   - {fileID: 1353220876625916, guid: 18a43080708030649a63f1daed0b9ea8, type: 2}
+  - {fileID: 1605558178719106, guid: f58db217740ad064c981395e463972d0, type: 2}
   foodTiles:
   - {fileID: 1574055286811910, guid: 07bca64b3a2b5bb4da90c1aeebf12642, type: 2}
   enemyTiles:
-  - {fileID: 1890876215747078, guid: ef382f8eb690c63438a5059f4c2caa6e, type: 2}
+  - {fileID: 1010331121131740, guid: e9fd32915c85e1543bc29016ebe7e0c2, type: 2}
   outerWallTiles:
   - {fileID: 1353220876625916, guid: 18a43080708030649a63f1daed0b9ea8, type: 2}
   player:

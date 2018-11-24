@@ -98,7 +98,7 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
                 }
             }
 
-            GameObject Character = Instantiate(player[0], new Vector3(0f, 0f, 0f), Quaternion.identity) as GameObject;
+            GameObject Character = Instantiate(player[0], new Vector3(0.1f, 0.1f, 0f), Quaternion.identity) as GameObject;
             Character.transform.SetParent(boardHolder);
             
             boardHolder.transform.SetParent(map.transform);
