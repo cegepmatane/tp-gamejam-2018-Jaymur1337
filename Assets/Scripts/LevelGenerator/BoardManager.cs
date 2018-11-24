@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
 
     public class BoardManager : MonoBehaviour
     {
-
+        public MapGrid map;
         // Using Serializable allows us to embed a class with sub properties in the inspector.
         [Serializable]
         public class Count
@@ -15,7 +15,7 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
             public int minimum;             //Minimum value for our Count class.
             public int maximum;             //Maximum value for our Count class.
 
-
+        
             //Assignment constructor.
             public Count(int min, int max)
             {
@@ -25,10 +25,10 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
         }
 
 
-        public int columns = 8;                                         //Number of columns in our game board.
-        public int rows = 8;                                            //Number of rows in our game board.
-        public Count wallCount = new Count(5, 9);                      //Lower and upper limit for our random number of walls per level.
-        public Count foodCount = new Count(1, 5);                      //Lower and upper limit for our random number of food items per level.
+        public int columns;                                         //Number of columns in our game board.
+        public int rows;                                            //Number of rows in our game board.
+        public Count wallCount = new Count(5, 9);                       //Lower and upper limit for our random number of walls per level.
+        public Count foodCount = new Count(1, 5);                       //Lower and upper limit for our random number of food items per level.
         public GameObject exit;                                         //Prefab to spawn for exit.
         public GameObject[] floorTiles;                                 //Array of floor prefabs.
         public GameObject[] wallTiles;                                  //Array of wall prefabs.
@@ -36,13 +36,20 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
         public GameObject[] enemyTiles;                                 //Array of enemy prefabs.
         public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
 
-        
+        private float xAlign = -8.5f;
+        private float yAlign = -8.5f;
         private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
+        private Transform ObstacleHolder;
         private List<Vector3> gridPositions = new List<Vector3>();   //A list of possible locations to place tiles.
 
+    private void Awake()
+    {
+        columns = map.GridSize;
+        rows = map.GridSize;
+    }
 
-        //Clears our list gridPositions and prepares it to generate a new board.
-        void InitialiseList()
+    //Clears our list gridPositions and prepares it to generate a new board.
+    void InitialiseList()
         {
             //Clear our list gridPositions.
             gridPositions.Clear();
@@ -80,13 +87,17 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
                         toInstantiate = outerWallTiles[Random.Range(0, outerWallTiles.Length)];
 
                     //Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
-                    GameObject instance =
-                        Instantiate(toInstantiate, new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
-
+                    GameObject instance = Instantiate(toInstantiate, new Vector3(x, y,0f), Quaternion.identity) as GameObject;
+                    instance.transform.parent = boardHolder.transform;
                     //Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
                     instance.transform.SetParent(boardHolder);
                 }
             }
+
+            boardHolder.transform.SetParent(map.transform);
+            Vector2 Alignement = new Vector2(xAlign,yAlign);
+
+            boardHolder.position = Alignement; 
         }
 
 
@@ -113,6 +124,7 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
             //Choose a random number of objects to instantiate within the minimum and maximum limits
             int objectCount = Random.Range(minimum, maximum + 1);
 
+            ObstacleHolder = new GameObject("Objects").transform;
             //Instantiate objects until the randomly chosen limit objectCount is reached
             for (int i = 0; i < objectCount; i++)
             {
@@ -123,8 +135,12 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
                 GameObject tileChoice = tileArray[Random.Range(0, tileArray.Length)];
 
                 //Instantiate tileChoice at the position returned by RandomPosition with no change in rotation
-                Instantiate(tileChoice, randomPosition, Quaternion.identity);
+                GameObject instance = Instantiate(tileChoice, randomPosition, Quaternion.identity);
+            instance.transform.SetParent(ObstacleHolder.transform);
             }
+            Vector2 Alignement = new Vector2(xAlign, yAlign);
+            ObstacleHolder.transform.SetParent(map.transform);
+            ObstacleHolder.position = Alignement;
         }
 
 
@@ -150,6 +166,11 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
             LayoutObjectAtRandom(enemyTiles, enemyCount, enemyCount);
 
             //Instantiate the exit tile in the upper right hand corner of our game board
-            Instantiate(exit, new Vector3(columns - 1, rows - 1, 0f), Quaternion.identity);
+            GameObject t_exitplacer = Instantiate(exit, new Vector3(columns - xAlign, rows - yAlign, 0f), Quaternion.identity);
+
+            Vector2 Alignement = new Vector2(xAlign, yAlign);
+            t_exitplacer.transform.SetParent(boardHolder);
+        t_exitplacer.transform.position = -Alignement;
+            
         }
 }

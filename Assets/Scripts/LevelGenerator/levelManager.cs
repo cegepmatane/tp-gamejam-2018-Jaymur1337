@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class levelManager : MonoBehaviour
 {
+    public static levelManager instance = null;
+
     public BoardManager BoardScript;
 
 	// Use this for initialization
 	void Awake ()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+            Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
         BoardScript = GetComponent<BoardManager>();
         InitGame();
 	}

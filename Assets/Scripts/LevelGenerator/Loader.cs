@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Loader : MonoBehaviour {
-
+public class Loader : MonoBehaviour
+{
+    public GameObject gameManager;
 	// Use this for initialization
-	void Start () {
-		
-	}
+	void Awake ()
+    {
+        if (levelManager.instance == null)
+
+            //Instantiate gameManager prefab
+            Instantiate(gameManager);
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
