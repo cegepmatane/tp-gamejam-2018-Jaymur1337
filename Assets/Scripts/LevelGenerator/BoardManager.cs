@@ -37,8 +37,8 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
         public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
         public GameObject[] player;
 
-        private float charX = -7.5f;
-        private float charY = -7.5f;
+        private float charX = -8.5f;
+        private float charY = -8.5f;
         private float xAlign = -8.5f;
         private float yAlign = -8.5f;
         private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
@@ -177,6 +177,7 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
             t_exitplacer.transform.position = -Alignement;
 
             GameObject Character = Instantiate(player[0], new Vector3(0.1f, 0.1f, 0f), Quaternion.identity) as GameObject;
+        Character.transform.position = new Vector2(charX, charY);
 
 
     }

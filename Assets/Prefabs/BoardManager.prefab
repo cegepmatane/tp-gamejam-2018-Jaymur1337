@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630302816ed812948810550e3e28b3a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoardScript: {fileID: 0}
+  BoardScript: {fileID: 114854550957359136}
 --- !u!114 &114854550957359136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,4 +86,4 @@ MonoBehaviour:
   outerWallTiles:
   - {fileID: 1353220876625916, guid: 18a43080708030649a63f1daed0b9ea8, type: 2}
   player:
-  - {fileID: 1815215204086514, guid: 5bf15a234e2cb2144a4ba966d227b6ca, type: 2}
+  - {fileID: 1715225228883768, guid: 09f4431b96ff8784182254a4f98bc394, type: 2}

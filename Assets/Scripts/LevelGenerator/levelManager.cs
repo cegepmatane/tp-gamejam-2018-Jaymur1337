@@ -24,7 +24,7 @@ public class levelManager : MonoBehaviour
 	}
     void InitGame()
     {
-        BoardScript.SetupScene(3);
+        BoardScript.SetupScene(5);
     }
 	
 	// Update is called once per frame
