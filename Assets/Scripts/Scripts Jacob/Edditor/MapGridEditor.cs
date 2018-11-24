@@ -49,7 +49,8 @@ public class MapGridEditor : Editor
             t_NewTile.transform.parent = grid.transform;
             //t_NewTile.name = t_TilePrefab.name + "("+ t_ClickedGridPoint.x + ","+ t_ClickedGridPoint.y +")";
             t_NewTile.name = string.Format("{0}({1}, {2})", t_TilePrefab.name, t_ClickedGridPoint.x, t_ClickedGridPoint.y);
-            t_NewTile.transform.localScale = new Vector3(grid.CellWidth, grid.CellHeight, 1);
+            
+        
             //Debug.Log("Control + Clicked GridPoint (" + t_ClickedGridPoint.x + ", " + t_ClickedGridPoint.y + ")");
         }
     }

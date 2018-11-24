@@ -121,6 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1035639106}
+  - component: {fileID: 1035639107}
   m_Layer: 0
   m_Name: MapGrid
   m_TagString: Untagged
@@ -141,6 +142,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1035639107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1035639105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdf3a6ad445bee842a30891ec5d94aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayOn: 1
+  CellHeight: 1
+  CellWidth: 1
+  GridColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  GridSize: 20
+  AvailableTiles:
+  - {fileID: 1807487177109268, guid: 7458b2213bba1094b90bb1ec2dfb828a, type: 2}
+  - {fileID: 1353220876625916, guid: 18a43080708030649a63f1daed0b9ea8, type: 2}
+  - {fileID: 1165124021953726, guid: 527b27e269422324cb402d7a31d050e5, type: 2}
+  SelectedTile: 0
 --- !u!1 &1606321157
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +196,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
