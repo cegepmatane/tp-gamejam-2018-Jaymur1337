@@ -77,14 +77,14 @@ MonoBehaviour:
   floorTiles:
   - {fileID: 1807487177109268, guid: 7458b2213bba1094b90bb1ec2dfb828a, type: 2}
   wallTiles:
-  - {fileID: 1353220876625916, guid: 6b6164ebacb54374382b92b499760e66, type: 2}
-  - {fileID: 1605558178719106, guid: f58db217740ad064c981395e463972d0, type: 2}
-  - {fileID: 1353220876625916, guid: 6b6164ebacb54374382b92b499760e66, type: 2}
+  - {fileID: 1353220876625916, guid: 5be2c7f6068b5f64fb01afdbdd52de77, type: 2}
+  - {fileID: 1397047777926678, guid: 70d95d41e0c6cbe43848d46fa468e4d4, type: 2}
+  - {fileID: 1353220876625916, guid: 5be2c7f6068b5f64fb01afdbdd52de77, type: 2}
   foodTiles:
   - {fileID: 1574055286811910, guid: 07bca64b3a2b5bb4da90c1aeebf12642, type: 2}
   enemyTiles:
   - {fileID: 1010331121131740, guid: e9fd32915c85e1543bc29016ebe7e0c2, type: 2}
   outerWallTiles:
-  - {fileID: 1353220876625916, guid: 18a43080708030649a63f1daed0b9ea8, type: 2}
+  - {fileID: 1353220876625916, guid: f3e59a49a4b8c804584120ead6fdff46, type: 2}
   player:
   - {fileID: 1334763314452452, guid: 84dc0a1ba1e400346b3d8b216dd9df22, type: 2}
