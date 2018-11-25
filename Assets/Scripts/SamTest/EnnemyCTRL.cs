@@ -17,7 +17,8 @@ public class EnnemyCTRL : MonoBehaviour
 
     private GameObject m_EndTile;
 
-    private float DetectPlayer = 2;
+    private float DetectPlayer = 1;
+    private float ReDetectPlayer = 1;
 
     private bool FindThePath = false;
 
@@ -31,6 +32,7 @@ public class EnnemyCTRL : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        EnnemyPathFinder = GameObject.FindObjectOfType<EnnemyPathFinder>();
         score = GameObject.FindObjectOfType<ScoreManager>();
     }
 
@@ -45,8 +47,9 @@ public class EnnemyCTRL : MonoBehaviour
             return;
 
         DetectPlayer -= Time.deltaTime;
+        ReDetectPlayer -= Time.deltaTime;
 
-        if (DetectPlayer <= 0.3f && DetectPlayer >= 0f)
+        if ((DetectPlayer <= 0.3f && DetectPlayer >= 0f) || (ReDetectPlayer <= 0.3f && ReDetectPlayer >= 0f))
         {
             FindThePath = true;
         }
@@ -57,6 +60,7 @@ public class EnnemyCTRL : MonoBehaviour
             if (FindThePath)
             {
                 FindThePath = false;
+                ReDetectPlayer = 1;
 
                 NextTargetId = 1;
                 m_Path = null;
@@ -66,7 +70,7 @@ public class EnnemyCTRL : MonoBehaviour
 
                 EnnemyPathFinder.FindEndPoint();
 
-                m_Path = GameObject.FindObjectOfType<EnnemyPathFinder>().GetPath(this.transform);
+                m_Path = EnnemyPathFinder.GetPath(this.transform);
 
                 
 
@@ -87,7 +91,7 @@ public class EnnemyCTRL : MonoBehaviour
                 if (++NextTargetId == m_Path.Tiles.Count)
                 {
                     FindThePath = false;
-                    DetectPlayer = 2;
+                    DetectPlayer = 1;
                 }
             }
         }
