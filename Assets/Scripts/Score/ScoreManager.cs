@@ -12,7 +12,10 @@ public class ScoreManager : MonoBehaviour
         Score++;
         ScoreText.text = "Score : " + Score;
     }
-   
 
+    public void RemoveHp()
+    {
+
+    }
 
 }
