@@ -15,32 +15,31 @@ public class EnnemyPathFinder : MonoBehaviour
     }
     public MapGrid grid;
 
-   // public Transform StartTransform;
     public Transform EndTransform;
 
     private Tile m_EndTile;
-
-    //m_StartTile,
-
 
     public bool DebugMode = false;
 
     private Node[,] m_Nodes;
 
-
-    //private Path TestPath;
+    private EnnemyCTRL EnnemyObj;
 
 
     private void Start()
     {
+        grid = (MapGrid)FindObjectOfType(typeof(MapGrid));
+    }
+
+    public void FindEndPoint()
+    {
+
+        m_Nodes = null;
 
         EndTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<MapGrid>();
 
-        // MapGrid.GridPoint t_StartGridPoint = grid.WorldPointToGridPoint(StartTransform.position);
         MapGrid.GridPoint t_EndGridPoint = grid.WorldPointToGridPoint(EndTransform.position);
 
-       // m_StartTile = grid.GetTile(t_StartGridPoint);
         m_EndTile = grid.GetTile(t_EndGridPoint);
 
         Debug.Log(t_EndGridPoint.x + " " + t_EndGridPoint.y);
@@ -56,14 +55,11 @@ public class EnnemyPathFinder : MonoBehaviour
                 m_Nodes[i, j].Tile = grid.Tiles[i, j];
             }
         }
-        foreach(Node n in m_Nodes)
+        foreach (Node n in m_Nodes)
         {
             if (n == null) continue;
             n.H = Heuristique(n.Tile.GridPoint.x, n.Tile.GridPoint.y, m_EndTile.GridPoint.x, m_EndTile.GridPoint.y);
         }
-
-        //todo tamporaire
-        //TestPath = GetPath();
 
     }
 
@@ -91,6 +87,7 @@ public class EnnemyPathFinder : MonoBehaviour
 
         //temp
         bool t_Done = false;
+
 
         //debut algo
         List<Node> t_OpenList = new List<Node>();
@@ -146,10 +143,9 @@ public class EnnemyPathFinder : MonoBehaviour
 
 
         Path t_Path = new Path();
-        if(t_EndNode.Parent != null)
+        t_Path.Tiles = new List<Tile>();
+        if (t_EndNode.Parent != null)
         {
-            t_Path.Tiles = new List<Tile>();
-
             Node current = t_EndNode;
             t_Path.Tiles.Add(current.Tile);
 
@@ -158,9 +154,8 @@ public class EnnemyPathFinder : MonoBehaviour
                 t_Path.Tiles.Add(current.Parent.Tile);
                 current = current.Parent;
             }
+            t_Path.Tiles.Reverse();
         }
-
-        t_Path.Tiles.Reverse();
         return t_Path;
     }
 

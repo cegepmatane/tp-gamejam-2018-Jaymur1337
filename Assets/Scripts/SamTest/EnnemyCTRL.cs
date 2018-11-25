@@ -5,8 +5,7 @@ using System.Linq;
 
 public class EnnemyCTRL : MonoBehaviour
 {
-
-    public float HP;
+    public float HP = 3;
     public float Speed = 1;
     public float DistanceCheck = 0.05f;
 
@@ -18,83 +17,97 @@ public class EnnemyCTRL : MonoBehaviour
 
     public GameObject m_EndTile;
 
+    private float DetectPlayer = 1;
+    private bool FindThePath = false;
+
+    private EnnemyPathFinder EnnemyPathFinder;
+
+    private ScoreManager score;
+
     [Header("Sounds")]
     public AudioClip DieSond;
-
 
     // Use this for initialization
     void Start()
     {
-
-        m_EndTile = GameObject.FindGameObjectWithTag("Player");
-
-        m_Path = GameObject.FindObjectOfType<EnnemyPathFinder>().GetPath(this.transform);
-
-        if (m_Path.Tiles.Count < 2)
-        {
-            Debug.LogError("PATH INVALID - < 2 elements");
-            Destroy(gameObject);
-        }
-
-        //transform.position = CurrentPath.Path[0].position;
+        EnnemyPathFinder = GameObject.FindObjectOfType<EnnemyPathFinder>();
+        score = GameObject.FindObjectOfType<ScoreManager>();
     }
-
-
-    void Test()
-    {
-
-    }
-
-
 
     // Update is called once per frame
     void Update()
     {
+        if(HP <= 0)
+        {
+            Destroy(this.gameObject);
+        }
         if (!AiActive)
             return;
-        Vector2 t_Direction = m_Path.Tiles[NextTargetId].transform.position - transform.position;
-        
-        /*
-        if (t_Direction != Vector2.zero)
+
+        DetectPlayer -= Time.deltaTime;
+
+        if (DetectPlayer < 0)
         {
-            float angle = Mathf.Atan2(t_Direction.y, t_Direction.x) * Mathf.Rad2Deg;
-            GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-        }
-        */
-        transform.Translate(t_Direction.normalized * Time.deltaTime * Speed);
-
-        float c2 = t_Direction.sqrMagnitude;
-
-        //transform.Rotate(t_Direction.normalized);
-
-        //quaternion. look rotation
-
-        if (c2 < DistanceCheck * DistanceCheck)
-        {
-            //si on est rendu au bout
-            if (++NextTargetId == m_Path.Tiles.Count)
+            FindThePath = true;
+            if (FindThePath)
             {
-                //StartCoroutine(Die());
+                NextTargetId = 1;
+                m_Path = null;
+                CurrentPath = null;
+
+                m_EndTile = GameObject.FindGameObjectWithTag("Player");
+
+                m_Path = GameObject.FindObjectOfType<EnnemyPathFinder>().GetPath(this.transform);
+
+                EnnemyPathFinder.FindEndPoint();
+
+                if (m_Path.Tiles.Count < 2)
+                {
+                    Debug.LogError("PATH INVALID - < 2 elements");
+                }
+            }
+
+            Vector2 t_Direction = m_Path.Tiles[NextTargetId].transform.position - transform.position;
+
+            transform.Translate(t_Direction.normalized * Time.deltaTime * Speed);
+
+            float c2 = t_Direction.sqrMagnitude;
+
+            if (c2 < DistanceCheck * DistanceCheck)
+            {
+                if (++NextTargetId == m_Path.Tiles.Count)
+                {
+                    FindThePath = false;
+                    DetectPlayer = 1;
+                }
             }
         }
-
     }
 
     private void OnDrawGizmosSelected()
     {
-        //lenght - 1 car on trace aps de ling a partire du renier element
-
-        // if (!DisplayPath) return;
-
         Gizmos.color = Color.green;
-
-
         if (m_Path == null || m_Path.Tiles == null) return;
-
         for (int i = 0; i < m_Path.Tiles.Count - 1; i++)
         {
             Gizmos.DrawLine(m_Path.Tiles[i].transform.position, m_Path.Tiles[i + 1].transform.position);
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+
+        Debug.LogWarning(collider);
+        if (collider.gameObject.tag == "PlayerHitBox")
+        {
+            print("Collision entre " + this.tag + " et le joueur");
+           // score.RemoveHp();
+        }
+
+        if (collider.gameObject.tag == "Bullet")
+        {
+            print("Collision entre " + this.tag + " et lune balle du joueur");
+            HP--;
+        }
+    }
 }

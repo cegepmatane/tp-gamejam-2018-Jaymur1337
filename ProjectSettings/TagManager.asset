@@ -7,6 +7,9 @@ TagManager:
   - Grid
   - EndTile
   - PlayerHitBox
+  - EnnemyHitBox
+  - Ennemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -17,14 +20,14 @@ TagManager:
   - 
   - 
   - PostProcessing
+  - 
+  - 
+  - 
+  - 
+  - 
   - PlayerHitBox
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - EnnemyHitBox
+  - Bullet
   - 
   - 
   - 

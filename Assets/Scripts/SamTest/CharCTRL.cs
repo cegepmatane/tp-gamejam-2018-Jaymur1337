@@ -21,7 +21,6 @@ public class CharCTRL : MonoBehaviour
 
     private CharPathFinder PlayerPathFinder;
 
-
     public ScoreManager score;
     public GameObject Gun;
     public GameObject Bullet;
@@ -33,11 +32,9 @@ public class CharCTRL : MonoBehaviour
     public AudioClip DieSond;
     public AudioClip BlockedSond;
 
-    
     // Use this for initialization
     void Start()
     {
-        score = GameObject.FindObjectOfType<ScoreManager>();
         PlayerPathFinder = GameObject.FindObjectOfType<CharPathFinder>();
         m_EndTile = Instantiate(m_EndTilePref);
         m_EndTile.transform.position = this.transform.position;
@@ -47,6 +44,7 @@ public class CharCTRL : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ShootTimer -= Time.deltaTime;
         if (Input.GetMouseButtonDown(0))
         {
             m_EndTile.SetActive(true);
@@ -104,7 +102,7 @@ public class CharCTRL : MonoBehaviour
 
         if (t_Direction != Vector2.zero)
         {
-            ShootTimer -= Time.deltaTime;
+            
             if (ShootTimer < 0)
             {
                 Shooting = false;
