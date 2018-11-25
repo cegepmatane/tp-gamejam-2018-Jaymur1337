@@ -37,14 +37,17 @@ public class EnnemyPathFinder : MonoBehaviour
         m_Nodes = null;
 
         EndTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        Debug.Log(EndTransform);
 
         MapGrid.GridPoint t_EndGridPoint = grid.WorldPointToGridPoint(EndTransform.position);
+        Debug.Log(t_EndGridPoint);
 
         m_EndTile = grid.GetTile(t_EndGridPoint);
 
         Debug.Log(t_EndGridPoint.x + " " + t_EndGridPoint.y);
 
         m_Nodes = new Node[grid.GridSize, grid.GridSize];
+        Debug.Log(m_Nodes);
 
         for (int i = 0; i < grid.GridSize; i++)
         {
