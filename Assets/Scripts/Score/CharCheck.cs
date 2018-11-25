@@ -21,7 +21,7 @@ public class CharCheck : MonoBehaviour
             Debug.Log("No Char");
             return;
         }
-        score.ScoreUp();
+        //score.ScoreUp();
     }
 
 }

@@ -44,6 +44,7 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
         private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
         private Transform ObstacleHolder;
         private List<Vector3> gridPositions = new List<Vector3>();   //A list of possible locations to place tiles.
+        private List<GameObject> CoinList = new List<GameObject>();
     
 
     //Clears our list gridPositions and prepares it to generate a new board.
@@ -147,10 +148,41 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
             ObstacleHolder.position = Alignement;
         }
 
+    void LayoutCoinAtRandom(GameObject[] tileArray, int minimum, int maximum)
+    {
+        //Choose a random number of objects to instantiate within the minimum and maximum limits
+        int objectCount = Random.Range(minimum, maximum + 1);
 
-        //SetupScene initializes our level and calls the previous functions to lay out the game board
-        public void SetupScene(int level)
+        ObstacleHolder = new GameObject("Coins").transform;
+        
+        //Instantiate objects until the randomly chosen limit objectCount is reached
+        for (int i = 0; i < objectCount; i++)
         {
+            //Choose a position for randomPosition by getting a random position from our list of available Vector3s stored in gridPosition
+            Vector3 randomPosition = RandomPosition();
+
+            //Choose a random tile from tileArray and assign it to tileChoice
+            GameObject tileChoice = tileArray[Random.Range(0, tileArray.Length)];
+
+            //Instantiate tileChoice at the position returned by RandomPosition with no change in rotation
+            GameObject instance = Instantiate(tileChoice, randomPosition, Quaternion.identity);
+            CoinList.Add(instance);
+            instance.transform.SetParent(ObstacleHolder.transform);
+        }
+        Vector2 Alignement = new Vector2(xAlign, yAlign);
+        ObstacleHolder.transform.SetParent(map.transform);
+        ObstacleHolder.position = Alignement;
+    }
+
+    public List<GameObject> GetCoins()
+    {
+        return CoinList;
+    }
+
+
+    //SetupScene initializes our level and calls the previous functions to lay out the game board
+    public void SetupScene(int level)
+    {
             //Creates the outer walls and floor.
             BoardSetup();
 
@@ -161,7 +193,7 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
             LayoutObjectAtRandom(wallTiles, wallCount.minimum, wallCount.maximum);
 
             //Instantiate a random number of food tiles based on minimum and maximum, at randomized positions.
-            LayoutObjectAtRandom(foodTiles, foodCount.minimum, foodCount.maximum);
+            LayoutCoinAtRandom(foodTiles, foodCount.minimum, foodCount.maximum);
 
             //Determine number of enemies based on current level number, based on a logarithmic progression
             int enemyCount = (int)Mathf.Log(level, 2f);
@@ -177,7 +209,7 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
             t_exitplacer.transform.position = -Alignement;
 
             GameObject Character = Instantiate(player[0], new Vector3(0.1f, 0.1f, 0f), Quaternion.identity) as GameObject;
-        Character.transform.position = new Vector2(charX, charY);
+            Character.transform.position = new Vector2(charX, charY);
 
 
     }

@@ -18,7 +18,7 @@ public class PickUp : MonoBehaviour
 
         if (collision.gameObject.tag == "PlayerHitBox")
         {
-            score.ScoreUp();
+            score.ScoreUp(true);
             Destroy(this.gameObject);
         }
         
