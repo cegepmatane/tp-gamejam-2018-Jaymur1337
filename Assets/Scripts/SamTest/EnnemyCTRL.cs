@@ -17,7 +17,7 @@ public class EnnemyCTRL : MonoBehaviour
 
     private GameObject m_EndTile;
 
-    private float DetectPlayer = 1;
+    private float DetectPlayer = 2;
 
     private bool FindThePath = false;
 
@@ -87,7 +87,7 @@ public class EnnemyCTRL : MonoBehaviour
                 if (++NextTargetId == m_Path.Tiles.Count)
                 {
                     FindThePath = false;
-                    DetectPlayer = 1;
+                    DetectPlayer = 2;
                 }
             }
         }
