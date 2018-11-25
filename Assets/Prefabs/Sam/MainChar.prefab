@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4717597319524220}
   - component: {fileID: 61867399094650778}
   - component: {fileID: 114852294389596284}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: HitBox
   m_TagString: PlayerHitBox
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1715225228883768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.8003907, y: -3.6877832, z: 0}
+  m_LocalPosition: {x: -0.44, y: 2.46, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 4394485047254090}
@@ -322,7 +322,7 @@ MonoBehaviour:
     type: 2}
   score: {fileID: 0}
   Gun: {fileID: 1313742625915372}
-  Bullet: {fileID: 1644602272968824, guid: 7e771b439b0938b419b367e139fcd25a, type: 2}
+  Bullet: {fileID: 1644602272968824, guid: 380adc3c0b1bc0844a4c227de4cc9700, type: 2}
   DieSond: {fileID: 8300000, guid: 88cb91be01dd59d4185efc01aa01e752, type: 3}
   BlockedSond: {fileID: 8300000, guid: 5e6f370ab463115499b992ff1dcffe61, type: 3}
 --- !u!114 &114852294389596284
