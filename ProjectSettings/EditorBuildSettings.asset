@@ -9,18 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Final/MainMenu.unity
     guid: aafba418d128c944cb62939baeef8d5b
   - enabled: 1
-    path: Assets/Scenes/Final/Editor.unity
-    guid: 31e91c28282c97648a014e64ad89cc07
-  - enabled: 1
-    path: Assets/Scenes/Final/InGame.unity
-    guid: a7b556ddc205eb04298d0afa2b8c9265
-  - enabled: 1
-    path: Assets/Scenes/Test Jak/TestJak.unity
+    path: Assets/Scenes/Final/GameScene.unity
     guid: 9ff3959e5ab70424680235365a973051
   - enabled: 1
-    path: Assets/Scenes/Test Jak/GameOverScene.unity
+    path: Assets/Scenes/Final/GameOverScene.unity
     guid: 6b266e2303939b941a0ef07a7d2bfc89
   - enabled: 1
-    path: Assets/Scenes/Test Jak/WinScene.unity
+    path: Assets/Scenes/Final/WinScene.unity
     guid: fe6db4c825e5dbc4c99f6584560ffc71
   m_configObjects: {}
