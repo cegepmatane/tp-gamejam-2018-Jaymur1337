@@ -14,8 +14,6 @@ public class PickUp : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision");
-       
-
         if (collision.gameObject.tag == "PlayerHitBox")
         {
             score.ScoreUp(true);

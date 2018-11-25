@@ -12,6 +12,7 @@ TagManager:
   - Bullet
   - Wall
   - Crate
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -44,7 +45,7 @@ TagManager:
   - 
   - Wall
   - Crate
-  - 
+  - Coin
   m_SortingLayers:
   - name: BackGround
     uniqueID: 407024773
