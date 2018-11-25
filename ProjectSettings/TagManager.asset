@@ -10,6 +10,8 @@ TagManager:
   - EnnemyHitBox
   - Ennemy
   - Bullet
+  - Wall
+  - Crate
   layers:
   - Default
   - TransparentFX
@@ -40,8 +42,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Wall
+  - Crate
   - 
   m_SortingLayers:
   - name: BackGround

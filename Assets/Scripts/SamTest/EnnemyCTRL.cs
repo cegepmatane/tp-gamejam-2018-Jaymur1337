@@ -121,6 +121,7 @@ public class EnnemyCTRL : MonoBehaviour
         if (collider.gameObject.tag == "Bullet")
         {
             print("Collision entre " + this.tag + " et lune balle du joueur");
+            Destroy(collider.gameObject);
             HP--;
         }
     }
