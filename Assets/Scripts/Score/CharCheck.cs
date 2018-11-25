@@ -14,14 +14,14 @@ public class CharCheck : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision");
-        PickUp t_Perso = collision.GetComponent<PickUp>();
+        PickUp t_PickUp = collision.GetComponent<PickUp>();
 
-        if (t_Perso == null)
+        if (t_PickUp == null)
         {
-            Debug.Log("No Char");
+            Debug.Log("No Coin");
             return;
         }
-        //score.ScoreUp();
+        score.ScoreUp(true);
     }
 
 }

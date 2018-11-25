@@ -68,16 +68,16 @@ MonoBehaviour:
   columns: 18
   rows: 18
   wallCount:
-    minimum: 50
-    maximum: 75
+    minimum: 75
+    maximum: 100
   foodCount:
-    minimum: 3
-    maximum: 7
+    minimum: 5
+    maximum: 15
   exit: {fileID: 1165124021953726, guid: 527b27e269422324cb402d7a31d050e5, type: 2}
   floorTiles:
   - {fileID: 1807487177109268, guid: 7458b2213bba1094b90bb1ec2dfb828a, type: 2}
   wallTiles:
-  - {fileID: 1353220876625916, guid: 18a43080708030649a63f1daed0b9ea8, type: 2}
+  - {fileID: 1353220876625916, guid: 6b6164ebacb54374382b92b499760e66, type: 2}
   - {fileID: 1605558178719106, guid: f58db217740ad064c981395e463972d0, type: 2}
   - {fileID: 1353220876625916, guid: 6b6164ebacb54374382b92b499760e66, type: 2}
   foodTiles:

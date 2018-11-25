@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212676418259992550}
   - component: {fileID: 58253160592569126}
   - component: {fileID: 114737542956510952}
-  - component: {fileID: 50536088703959272}
+  - component: {fileID: 50966654108671198}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -37,13 +37,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1574055286811910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.788, y: -1.644, z: 0}
+  m_LocalPosition: {x: 13.680412, y: 7.8295417, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50536088703959272
+--- !u!50 &50966654108671198
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1

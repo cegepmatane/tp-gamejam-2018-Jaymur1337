@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35eff9089324a954d88b953a0de627c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Zombie: {fileID: 1769472223401868, guid: fefc6b7766a36614cbe436796cabaeed, type: 2}
+  Zombie: {fileID: 1817423137765652, guid: fefc6b7766a36614cbe436796cabaeed, type: 2}
   MinSpawnTime: 3
   MaxSpawnTime: 5
 --- !u!212 &212448265067463510
