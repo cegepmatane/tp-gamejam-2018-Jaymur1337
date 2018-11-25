@@ -25,6 +25,7 @@ public class ScoreManager : MonoBehaviour
     }
     private void Start()
     {
+       
         board = GameObject.FindObjectOfType<BoardManager>();
         CoinList = board.GetCoins();
         ExitCollider = board.exit.GetComponent<Collider2D>();
@@ -48,6 +49,8 @@ public class ScoreManager : MonoBehaviour
 
     public void RemoveHp()
     {
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.Play();
         Hp--;
         HpText.text = "Hp : " + Hp;
         if (Hp == 0)
