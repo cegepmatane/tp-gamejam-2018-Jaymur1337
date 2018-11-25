@@ -15,12 +15,12 @@ public class EnnemyCTRL : MonoBehaviour
 
     private bool AiActive = true;
 
-    public GameObject m_EndTile;
+    private GameObject m_EndTile;
 
     private float DetectPlayer = 1;
     private bool FindThePath = false;
 
-    private EnnemyPathFinder EnnemyPathFinder;
+    public EnnemyPathFinder EnnemyPathFinder;
 
     private ScoreManager score;
 
@@ -30,7 +30,6 @@ public class EnnemyCTRL : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        EnnemyPathFinder = GameObject.FindObjectOfType<EnnemyPathFinder>();
         score = GameObject.FindObjectOfType<ScoreManager>();
     }
 

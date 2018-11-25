@@ -223,7 +223,7 @@ MonoBehaviour:
   HP: 3
   Speed: 1
   DistanceCheck: 0.05
-  m_EndTile: {fileID: 0}
+  EnnemyPathFinder: {fileID: 114422542979166674}
   DieSond: {fileID: 0}
 --- !u!212 &212280288751401152
 SpriteRenderer:
