@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Grid
   - EndTile
+  - PlayerHitBox
   layers:
   - Default
   - TransparentFX

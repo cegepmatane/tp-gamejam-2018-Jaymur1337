@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
+public class CharCheck : MonoBehaviour
 {
     public ScoreManager score;
 
@@ -13,8 +13,15 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        CharCheck t_char = collision.GetComponent<CharCheck>();
-        Debug.Log(t_char);
+        Debug.Log("Collision");
+        PickUp t_Perso = collision.GetComponent<PickUp>();
+
+        if (t_Perso == null)
+        {
+            Debug.Log("No Char");
+            return;
+        }
+        score.ScoreUp();
     }
 
 }

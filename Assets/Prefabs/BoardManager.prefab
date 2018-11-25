@@ -68,8 +68,8 @@ MonoBehaviour:
   columns: 18
   rows: 18
   wallCount:
-    minimum: 20
-    maximum: 25
+    minimum: 50
+    maximum: 75
   foodCount:
     minimum: 3
     maximum: 7
@@ -79,6 +79,7 @@ MonoBehaviour:
   wallTiles:
   - {fileID: 1353220876625916, guid: 18a43080708030649a63f1daed0b9ea8, type: 2}
   - {fileID: 1605558178719106, guid: f58db217740ad064c981395e463972d0, type: 2}
+  - {fileID: 1353220876625916, guid: 6b6164ebacb54374382b92b499760e66, type: 2}
   foodTiles:
   - {fileID: 1574055286811910, guid: 07bca64b3a2b5bb4da90c1aeebf12642, type: 2}
   enemyTiles:

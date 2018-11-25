@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
 
     public void ScoreUp()
     {
-        Score++;
+        Score = Score + 1;
     }
 	
 
