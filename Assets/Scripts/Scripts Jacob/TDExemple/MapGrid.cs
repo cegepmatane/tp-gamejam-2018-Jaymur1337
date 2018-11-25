@@ -45,20 +45,32 @@ public class MapGrid : MonoBehaviour
 
     private void Awake()
     {
+        CalcGrid();
+
+        //int t_MaxGridX = t_Tiles.Max(t => t.GridPoint.x);
+        //int t_MaxGridY = t_Tiles.Max(t => t.GridPoint.y);
+
+    }
+
+
+    public void CalcGrid()
+    {
         Tiles = new Tile[GridSize, GridSize];
         List<Tile> t_Tiles = new List<Tile>(GetComponentsInChildren<Tile>());
 
         // Calcul de pos de chaque tuile
         foreach (Tile t_Tile in t_Tiles)
         {
+            if (!t_Tile.Active)
+                continue;
             t_Tile.GridPoint = WorldPointToGridPoint(t_Tile.transform.position);
             Tiles[t_Tile.GridPoint.x, t_Tile.GridPoint.y] = t_Tile;
         }
-
-        //int t_MaxGridX = t_Tiles.Max(t => t.GridPoint.x);
-        //int t_MaxGridY = t_Tiles.Max(t => t.GridPoint.y);
-
     }
+
+
+
+
     private void OnDrawGizmosSelected()
     {
         if (!DisplayOn)
@@ -88,6 +100,7 @@ public class MapGrid : MonoBehaviour
                         );
         }
     }
+
     public MapGrid.GridPoint WorldPointToGridPoint(Vector2 a_Point)
     {
         // La moitier de la taille de la grille

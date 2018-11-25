@@ -15,6 +15,8 @@ public class CrateCTRL : MonoBehaviour {
             Destroy(collider.gameObject);
             if (Hp <= 0)
             {
+                GetComponent<Tile>().Active = false;
+                GameObject.FindObjectOfType<MapGrid>().CalcGrid();
                 Destroy(this.gameObject);
             }
         }
