@@ -26,6 +26,8 @@ public class CharCTRL : MonoBehaviour
     public GameObject Gun;
     public GameObject Bullet;
 
+    private bool Shooting = false;
+    private float ShootTimer;
 
     [Header("Sounds")]
     public AudioClip DieSond;
@@ -55,6 +57,7 @@ public class CharCTRL : MonoBehaviour
             Vector3 pz = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pz.z = 0;
 
+
             m_EndTile.transform.position = pz;
 
             PlayerPathFinder.FindEndPoint();
@@ -72,10 +75,24 @@ public class CharCTRL : MonoBehaviour
 
         if (Input.GetButtonDown("Fire2"))
         {
+
+            Vector3 pz2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            pz2.z = 0;
+            pz2 = pz2 - transform.position;
+
+            Vector2 t_ShootingDirection = pz2;
+
+            if (t_ShootingDirection != Vector2.zero)
+            {
+                float angle = Mathf.Atan2(t_ShootingDirection.y, t_ShootingDirection.x) * Mathf.Rad2Deg;
+                GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+            }
+
             GameObject ShootedBullet = Instantiate(Bullet);
             ShootedBullet.transform.position = Gun.transform.position;
             ShootedBullet.transform.rotation = Gun.transform.rotation;
-
+            Shooting = true;
+            ShootTimer = 1;
 
         }
             if (!AiActive)
@@ -85,8 +102,16 @@ public class CharCTRL : MonoBehaviour
 
         if (t_Direction != Vector2.zero)
         {
+            ShootTimer -= Time.deltaTime;
+            if (ShootTimer < 0)
+            {
+                Shooting = false;
+            }
             float angle = Mathf.Atan2(t_Direction.y, t_Direction.x) * Mathf.Rad2Deg;
-            GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+            if (!Shooting)
+            {
+                GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+            }
         }
 
         transform.Translate(t_Direction.normalized * Time.deltaTime * Speed);
@@ -102,7 +127,6 @@ public class CharCTRL : MonoBehaviour
                 AiActive = false;
                 PlayerPathFinder.enabled = false;
                 PlayerPathFinder.enabled = true;
-                //StartCoroutine(Die());
             }
         }
     }
