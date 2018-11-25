@@ -111,6 +111,7 @@ public class EnnemyCTRL : MonoBehaviour
         {
             print("Collision entre " + this.tag + " et le joueur");
             score.RemoveHp();
+            Destroy(this.gameObject);
         }
 
         if (collider.gameObject.tag == "Bullet")
