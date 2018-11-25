@@ -30,13 +30,14 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
         public Count wallCount = new Count(5, 9);                       //Lower and upper limit for our random number of walls per level.
         public Count foodCount = new Count(1, 5);                       //Lower and upper limit for our random number of food items per level.
         public GameObject exit;                                         //Prefab to spawn for exit.
+        
         public GameObject[] floorTiles;                                 //Array of floor prefabs.
         public GameObject[] wallTiles;                                  //Array of wall prefabs.
         public GameObject[] foodTiles;                                  //Array of food prefabs.
         public GameObject[] enemyTiles;                                 //Array of enemy prefabs.
         public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
         public GameObject[] player;
-
+        
         private float charX = -8.5f;
         private float charY = -8.5f;
         private float xAlign = -8.5f;
@@ -178,6 +179,8 @@ using Random = UnityEngine.Random;      //Tells Random to use the Unity Engine r
     {
         return CoinList;
     }
+
+    
 
 
     //SetupScene initializes our level and calls the previous functions to lay out the game board

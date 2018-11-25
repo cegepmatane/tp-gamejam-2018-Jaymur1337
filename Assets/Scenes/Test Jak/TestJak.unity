@@ -387,6 +387,51 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 541141522}
   m_CullTransparentMesh: 0
+--- !u!1 &561874806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 561874808}
+  - component: {fileID: 561874807}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &561874807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 561874806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf9e56f57acb2342b8580665496d15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Score: 0
+  ScoreText: {fileID: 2005576627}
+  Hp: 5
+  HpText: {fileID: 541141524}
+  ExitCollider: {fileID: 0}
+--- !u!4 &561874808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 561874806}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5745328, y: -0.09438334, z: -0.1800767}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1126423454
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +706,6 @@ GameObject:
   - component: {fileID: 2005576626}
   - component: {fileID: 2005576628}
   - component: {fileID: 2005576627}
-  - component: {fileID: 2005576629}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -727,22 +771,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2005576625}
   m_CullTransparentMesh: 0
---- !u!114 &2005576629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2005576625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bf9e56f57acb2342b8580665496d15c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Score: 0
-  ScoreText: {fileID: 2005576627}
-  Hp: 5
-  HpText: {fileID: 541141524}
-  Exit: {fileID: 0}
 --- !u!1 &2019284866
 GameObject:
   m_ObjectHideFlags: 0

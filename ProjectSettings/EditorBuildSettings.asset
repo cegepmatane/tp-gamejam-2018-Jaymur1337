@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final/InGame.unity
     guid: a7b556ddc205eb04298d0afa2b8c9265
+  - enabled: 1
+    path: Assets/Scenes/Test Jak/TestJak.unity
+    guid: 9ff3959e5ab70424680235365a973051
+  - enabled: 1
+    path: Assets/Scenes/Test Jak/GameOverScene.unity
+    guid: 6b266e2303939b941a0ef07a7d2bfc89
+  - enabled: 1
+    path: Assets/Scenes/Test Jak/WinScene.unity
+    guid: fe6db4c825e5dbc4c99f6584560ffc71
   m_configObjects: {}

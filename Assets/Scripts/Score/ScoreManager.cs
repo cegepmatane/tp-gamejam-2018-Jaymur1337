@@ -14,17 +14,20 @@ public class ScoreManager : MonoBehaviour
     public int Hp = 5;
     public Text HpText;
     private int CoinCounter = 0;
-    public Tile Exit;
+    public Collider2D ExitCollider;
 
     private List<GameObject> CoinList;
     private BoardManager board;
-    
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     private void Start()
     {
         board = GameObject.FindObjectOfType<BoardManager>();
         CoinList = board.GetCoins();
-        Exit = board.exit.GetComponent<Tile>();
+        ExitCollider = board.exit.GetComponent<Collider2D>();
         foreach(GameObject coin in CoinList)
         {
             CoinCounter++;
@@ -52,7 +55,7 @@ public class ScoreManager : MonoBehaviour
     }
     public void OpenExit()
     {
-        Exit.BaseCost = 1;
+        ExitCollider.enabled = true;
     }
 
 
