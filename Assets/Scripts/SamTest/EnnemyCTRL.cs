@@ -123,6 +123,8 @@ public class EnnemyCTRL : MonoBehaviour
         {
             print("Collision entre " + this.tag + " et lune balle du joueur");
             Destroy(collider.gameObject);
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.Play();
             HP--;
         }
     }
