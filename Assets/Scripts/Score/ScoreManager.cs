@@ -7,6 +7,10 @@ public class ScoreManager : MonoBehaviour
 {
     public int Score = 0;
     public Text ScoreText;
+
+    public int Hp = 5;
+    public Text HpText;
+
     public void ScoreUp()
     {
         Score++;
@@ -14,6 +18,14 @@ public class ScoreManager : MonoBehaviour
     }
 
     public void RemoveHp()
+    {
+        Hp--;
+        HpText.text = "Hp : " + Hp;
+        if (Hp == 0)
+            GameOver();
+    }
+
+    public void GameOver()
     {
 
     }

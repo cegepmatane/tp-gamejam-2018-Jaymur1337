@@ -14,14 +14,14 @@ public class PickUp : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision");
-        CharCTRL t_Perso = collision.GetComponent<CharCTRL>();
+       
 
-        if (t_Perso == null)
+        if (collision.gameObject.tag == "PlayerHitBox")
         {
-            Debug.Log("No Char");
-            return;
+            score.ScoreUp();
+            Destroy(this.gameObject);
         }
-        score.ScoreUp();
+        
     }
 
 

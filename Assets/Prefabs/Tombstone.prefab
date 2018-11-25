@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4439337288316742}
   - component: {fileID: 212448265067463510}
   - component: {fileID: 114329493887585192}
-  - component: {fileID: 114980532588113906}
   m_Layer: 0
   m_Name: Tombstone
   m_TagString: Untagged
@@ -54,20 +53,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseCost: -1
---- !u!114 &114980532588113906
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1010331121131740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35eff9089324a954d88b953a0de627c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Zombie: {fileID: 1618738472822750, guid: 003cc6d874d05ea49ade1fcb26aabc96, type: 2}
-  MinSpawnTime: 3
-  MaxSpawnTime: 5
 --- !u!212 &212448265067463510
 SpriteRenderer:
   m_ObjectHideFlags: 1
