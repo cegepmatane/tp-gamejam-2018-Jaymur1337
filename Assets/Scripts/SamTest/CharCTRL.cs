@@ -43,7 +43,7 @@ public class CharCTRL : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+   {
         ShootTimer -= Time.deltaTime;
         if (Input.GetMouseButtonDown(0))
         {
