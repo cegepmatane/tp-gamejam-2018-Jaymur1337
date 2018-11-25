@@ -22,7 +22,7 @@ public class CharCTRL : MonoBehaviour
     private CharPathFinder PlayerPathFinder;
 
 
-
+    public ScoreManager score;
     public GameObject Gun;
     public GameObject Bullet;
 
@@ -33,9 +33,11 @@ public class CharCTRL : MonoBehaviour
     public AudioClip DieSond;
     public AudioClip BlockedSond;
 
+    
     // Use this for initialization
     void Start()
     {
+        score = GameObject.FindObjectOfType<ScoreManager>();
         PlayerPathFinder = GameObject.FindObjectOfType<CharPathFinder>();
         m_EndTile = Instantiate(m_EndTilePref);
         m_EndTile.transform.position = this.transform.position;

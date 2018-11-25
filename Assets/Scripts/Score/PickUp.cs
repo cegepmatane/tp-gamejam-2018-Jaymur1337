@@ -13,8 +13,16 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        CharCheck t_char = collision.GetComponent<CharCheck>();
-        Debug.Log(t_char);
+        Debug.Log("Collision");
+        CharCTRL t_Perso = collision.GetComponent<CharCTRL>();
+
+        if (t_Perso == null)
+        {
+            Debug.Log("No Char");
+            return;
+        }
+        score.ScoreUp();
     }
+
 
 }
