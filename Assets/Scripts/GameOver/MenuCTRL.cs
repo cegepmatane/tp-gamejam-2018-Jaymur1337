@@ -7,7 +7,7 @@ public class MenuCTRL : MonoBehaviour
 {
     public void LoadGame()
     {
-        SceneManager.LoadScene("TestJak", LoadSceneMode.Single);
+        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
     }
 
     public void ExitGame()

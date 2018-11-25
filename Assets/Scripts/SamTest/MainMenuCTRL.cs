@@ -10,12 +10,12 @@ public class MainMenuCTRL : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("TestJak", LoadSceneMode.Single);
+        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
     }
 
     public void EditMapButton()
     {
-        SceneManager.LoadScene("Editor", LoadSceneMode.Single);
+        
     }
 
     public void ChoseMapButton()
