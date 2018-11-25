@@ -41,6 +41,7 @@ public class EnnemyCTRL : MonoBehaviour
     {
         if(HP <= 0)
         {
+            score.ScoreUp(false);
             Destroy(this.gameObject);
         }
         if (!AiActive)
